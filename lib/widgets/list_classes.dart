@@ -44,7 +44,7 @@ class _ClasseCardState extends State<ClasseCard> {
               ),
             ),
             SizedBox(
-              height: 100,
+              height: 90,
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),

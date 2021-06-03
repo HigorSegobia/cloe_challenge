@@ -29,9 +29,12 @@ class _ClassesViewState extends State<ClassesView> {
               converter: convert,
               builder: (context, vm) {
                 return NotificationListener<ScrollUpdateNotification>(
-                  child: ListView.builder(
-                      controller: _scrollController,
+                  child: GridView.builder(
                       itemCount: vm.classesList().length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                      ),
                       itemBuilder: (context, value) {
                         return TextButton(
                           child: ClasseCard(vm.classesList(), value),
