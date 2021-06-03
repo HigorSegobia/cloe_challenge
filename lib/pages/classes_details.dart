@@ -17,23 +17,18 @@ class _ClasseDetailsState extends State<ClasseDetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Classe Details'),
+        title: Text('Aula ' + widget.classes[widget.index].id.toString()),
         backgroundColor: Theme.Styles.secondColor,
-        centerTitle: true,
       ),
       body: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(20.0),
-            child: Container(
-              height: 200,
-              width: 200,
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                    image:
-                        NetworkImage('${widget.classes[widget.index].image}'),
-                    fit: BoxFit.cover),
-              ),
+          Container(
+            height: 300,
+            width: MediaQuery.of(context).size.width,
+            decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: NetworkImage('${widget.classes[widget.index].image}'),
+                  fit: BoxFit.cover),
             ),
           ),
           Padding(
@@ -47,10 +42,9 @@ class _ClasseDetailsState extends State<ClasseDetails> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.all(10.0),
+            padding: const EdgeInsets.only(right: 30, left: 30),
             child: Text(
               widget.classes[widget.index].description,
-              maxLines: 4,
               style: TextStyle(
                 fontSize: 14,
                 color: Colors.black,

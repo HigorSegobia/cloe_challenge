@@ -12,42 +12,49 @@ class ClassesView extends StatefulWidget {
 }
 
 class _ClassesViewState extends State<ClassesView> {
-  ScrollController _scrollController = ScrollController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.Styles.mainColor,
-      appBar: AppBar(
-        backgroundColor: Theme.Styles.secondColor,
-        centerTitle: true,
-        title: Text('Cloe'),
-      ),
-      body: Column(
-        children: <Widget>[
-          Expanded(
-            child: StoreConnector<AppState, ClassesViewModel>(
-              converter: convert,
-              builder: (context, vm) {
-                return NotificationListener<ScrollUpdateNotification>(
-                  child: GridView.builder(
-                      itemCount: vm.classesList().length,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                      ),
-                      itemBuilder: (context, value) {
-                        return TextButton(
-                          child: ClasseCard(vm.classesList(), value),
-                          onPressed: () {
-                            vm.goToDetails(context, vm.classesList(), value);
-                          },
-                        );
-                      }),
-                );
-              },
+      body: Container(
+        width: MediaQuery.of(context).size.width,
+        height: MediaQuery.of(context).size.height,
+        child: Column(
+          children: <Widget>[
+            Container(
+              width: 100,
+              height: 35,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                image: AssetImage('assets/logo.png'),
+                fit: BoxFit.fill,
+              )),
             ),
-          ),
-        ],
+            Expanded(
+              child: StoreConnector<AppState, ClassesViewModel>(
+                converter: convert,
+                builder: (context, vm) {
+                  return NotificationListener<ScrollUpdateNotification>(
+                    child: GridView.builder(
+                        itemCount: vm.classesList().length,
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                        ),
+                        itemBuilder: (context, value) {
+                          return TextButton(
+                            child: ClasseCard(vm.classesList(), value),
+                            onPressed: () {
+                              vm.goToDetails(context, vm.classesList(), value);
+                            },
+                          );
+                        }),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
