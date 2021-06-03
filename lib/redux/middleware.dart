@@ -17,7 +17,6 @@ Middleware<AppState> searchClasseMiddleware() {
     store.dispatch(IsLoadingAction(true));
     final newClasses = await ClassesRepositoryImpl().getClasse();
     store.dispatch(DisplayClasseListAction(newClasses));
-    store.dispatch(IncrementCurrentPageAction());
     action.isDone.complete(true);
     store.dispatch(IsLoadingAction(false));
   };

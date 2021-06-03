@@ -26,6 +26,10 @@ class _ClasseDetailsState extends State<ClasseDetails> {
             height: 300,
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(120),
+                bottomRight: Radius.circular(120),
+              ),
               image: DecorationImage(
                   image: NetworkImage('${widget.classes[widget.index].image}'),
                   fit: BoxFit.cover),

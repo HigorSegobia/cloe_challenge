@@ -14,8 +14,6 @@ class DisplayClasseListAction {
   DisplayClasseListAction(this.classes);
 }
 
-class IncrementCurrentPageAction {}
-
 class NavigateToListViewAction {}
 
 class IsLoadingAction {

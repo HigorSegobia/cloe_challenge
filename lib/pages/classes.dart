@@ -16,12 +16,11 @@ class _ClassesViewState extends State<ClassesView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.Styles.mainColor,
-      body: Container(
-        width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          children: <Widget>[
-            Container(
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(top: 40.0),
+            child: Container(
               width: 100,
               height: 35,
               decoration: BoxDecoration(
@@ -30,31 +29,31 @@ class _ClassesViewState extends State<ClassesView> {
                 fit: BoxFit.fill,
               )),
             ),
-            Expanded(
-              child: StoreConnector<AppState, ClassesViewModel>(
-                converter: convert,
-                builder: (context, vm) {
-                  return NotificationListener<ScrollUpdateNotification>(
-                    child: GridView.builder(
-                        itemCount: vm.classesList().length,
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 2,
-                        ),
-                        itemBuilder: (context, value) {
-                          return TextButton(
-                            child: ClasseCard(vm.classesList(), value),
-                            onPressed: () {
-                              vm.goToDetails(context, vm.classesList(), value);
-                            },
-                          );
-                        }),
-                  );
-                },
-              ),
+          ),
+          Expanded(
+            child: StoreConnector<AppState, ClassesViewModel>(
+              converter: convert,
+              builder: (context, vm) {
+                return NotificationListener<ScrollUpdateNotification>(
+                  child: GridView.builder(
+                      itemCount: vm.classesList().length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                      ),
+                      itemBuilder: (context, value) {
+                        return TextButton(
+                          child: ClasseCard(vm.classesList(), value),
+                          onPressed: () {
+                            vm.goToDetails(context, vm.classesList(), value);
+                          },
+                        );
+                      }),
+                );
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

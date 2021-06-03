@@ -22,7 +22,7 @@ class _ClasseCardState extends State<ClasseCard> {
           borderRadius: BorderRadius.circular(30.0),
           image: DecorationImage(
             colorFilter: new ColorFilter.mode(
-                Colors.black.withOpacity(0.3), BlendMode.color),
+                Colors.black.withOpacity(0.4), BlendMode.color),
             image: NetworkImage(
               widget.classes[widget.index].image,
             ),

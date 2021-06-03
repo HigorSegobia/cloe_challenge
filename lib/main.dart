@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:cloe_challenge/pages/loading_screen.dart';
 import 'package:cloe_challenge/redux/middleware.dart';
@@ -8,6 +9,10 @@ import 'package:redux/redux.dart';
 import 'model/app_state.dart';
 
 void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarBrightness: Brightness.light,
+  ));
   runApp(MyApp());
 }
 
